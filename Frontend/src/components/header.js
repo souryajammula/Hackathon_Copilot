@@ -1,0 +1,20 @@
+import './logo.css';
+import ChatGPT from "./chatGPT";
+import React from "react";
+
+const Header = () => {
+
+
+    return (
+            <div className="row header">
+                <div className="col-md-4 header-elements">
+                    <img src="data:image/png;base64,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" width="80" height="50" />
+                </div>
+                <div className="col-md-6 header-elements">
+                    <span>Macroeconomic Researcher Food Security Time Series and Large Language Chat GPT Dashboard.</span>
+                </div>
+            </div>
+    )
+}
+
+export default Header;
