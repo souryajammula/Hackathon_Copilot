@@ -3,8 +3,8 @@ import { Chart, registerables } from 'chart.js';
 const ChartDisplay = ({ data, country}) => {
     Chart.register(...registerables);
 
-    // console.log("chart lo unna");
-    // console.log(data)
+    console.log("chart lo unna");
+    console.log(data)
     const chartData = {
         labels: data.labels,
         datasets: [
