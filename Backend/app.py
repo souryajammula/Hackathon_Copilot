@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 OPENAI_API_KEY = "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"
 
 TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon-copilot/Backend/taxpdf.pdf"
-# TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon-copilot/Backend/tax1.pdf"
+# TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon_Copilot/Backend/tax1.pdf"
 
 # CORS middleware
 app.add_middleware(
