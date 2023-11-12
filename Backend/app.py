@@ -10,6 +10,9 @@ from langchain.llms import OpenAI
 from typing import Optional
 import os
 import logging
+from dotenv import load_dotenv  # Import the dotenv module
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -17,10 +20,10 @@ app = FastAPI()
 logger = logging.getLogger(__name__)
 
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon-copilot/Backend/taxpdf.pdf"
-# TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon_Copilot/Backend/tax1.pdf"
+# TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon-copilot/Backend/taxpdf.pdf"
+TAX_PDF_PATH = "/Applications/XAMPP/xamppfiles/htdocs/Hackathon_Copilot/Backend/tax1.pdf"
 
 # CORS middleware
 app.add_middleware(
