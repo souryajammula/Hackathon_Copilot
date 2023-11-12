@@ -1,11 +1,15 @@
 import { Line } from 'react-chartjs-2';
+import { Chart, registerables } from 'chart.js';
+const ChartDisplay = ({ data, country}) => {
+    Chart.register(...registerables);
 
-const ChartDisplay = ({ data }) => {
+    // console.log("chart lo unna");
+    // console.log(data)
     const chartData = {
         labels: data.labels,
         datasets: [
             {
-                label: 'Data',
+                label: {country},
                 data: data.values,
                 fill: false,
                 backgroundColor: 'rgb(75, 192, 192)',
