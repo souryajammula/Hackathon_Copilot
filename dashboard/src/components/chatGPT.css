@@ -25,6 +25,10 @@
     height:80vh;
   }
 
+  .modal-title{
+    color:black;
+  }
+
   .chatbot-container{
 
   }
@@ -69,4 +73,35 @@
   display: flex;
   justify-content:center;
   align-items:center;
+}
+
+
+
+.responseClass {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width:100%;
+  background-color: transparent;
+}
+
+.user-message {
+  background-color: rgb(145, 145, 244);
+  color: black;
+  border-radius: 8px;
+  padding: 8px;
+  width:70%;
+  margin-bottom: 10px;
+  text-align: right;
+  float: right;
+}
+
+.bot-message {
+  background-color: white;
+  color: black;
+  width:70%;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: left;
+  float: left;
 }
