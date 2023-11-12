@@ -1,0 +1,85 @@
+/* App.css */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  border: 2px solid black;
+  background: none;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo-button {
+  background: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+
+.header-title {
+  color: black;
+}
+
+.country-dropdown-button {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 5px;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+.content {
+  background: #fff;
+  border: 2px dashed #999; /* Dashed border for indicating drop area */
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+.sidebar {
+  border: 2px solid black; /* Add black border */
+  padding: 20px;
+  color: black; /* Set text color to black */
+}
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+}
+
+.collapsible-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.subheadings {
+  list-style: none;
+}
+
+.subheadings.collapsed {
+  display: none;
+}
+
+.footer {
+  background: black;
+  color: white;
+  padding: 10px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end; /* Align content to the right */
+  align-items: center; 
+}
+.gpt {
+  width: 32px; /* Set the width and height of the image */
+  height: 32px;
+  margin-right: 10px; 
+}
