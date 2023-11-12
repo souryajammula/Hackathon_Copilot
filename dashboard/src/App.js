@@ -8,7 +8,7 @@ import GDP from './CSV files/GDP Growth Rate.csv'
 const App = () => {
     const [selectedCountry, setSelectedCountry] = useState('USA');
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [fullData, setFullData] = useState([]); // Store the full dataset here
+    const [allData, setAllData] = useState({}); // Store datasets keyed by file name
     const [filteredData, setFilteredData] = useState(null); // Data to be used for charting
     const [yearRange, setYearRange] = useState({ start: 1960, end: 2020 });
 
@@ -38,27 +38,29 @@ const App = () => {
     //
     //     setData(processedData);
     // };
-    const handleDataLoaded = (loadedData) => {
-        setFullData(loadedData);
+    const handleDataLoaded = (file, loadedData) => {
+        setAllData(prevData => ({ ...prevData, [file]: loadedData }));
     };
 
     const filterDataByYearRange = () => {
-        const filtered = fullData.filter(item => {
-            const year = Number(item.Year);
-            return year >= yearRange.start && year <= yearRange.end;
+        const newFilteredData = {};
+        Object.keys(allData).forEach(file => {
+            const filtered = allData[file].filter(item => {
+                const year = Number(item.Year);
+                return year >= yearRange.start && year <= yearRange.end;
+            });
+
+            newFilteredData[file] = {
+                labels: filtered.map(item => item.Year),
+                values: filtered.map(item => item[selectedCountry])
+            };
         });
-
-        const processedData = {
-            labels: filtered.map(item => item.Year),
-            values: filtered.map(item => item[selectedCountry])
-        };
-
-        setFilteredData(processedData);
+        setFilteredData(newFilteredData);
     };
 
     useEffect(() => {
         filterDataByYearRange();
-    }, [fullData, yearRange, selectedCountry]);
+    }, [allData, yearRange, selectedCountry]);
 
 
     const handleStartYearChange = (event) => {
@@ -79,9 +81,14 @@ const App = () => {
                 yearRange={yearRange}
             />
             {selectedFiles.map(file => (
-                <DataLoader key={file} file={GDP} onDataLoaded={handleDataLoaded} />
+                <DataLoader key={file} file={GDP} onDataLoaded={(data) => handleDataLoaded(file, data)} />
             ))}
-            {filteredData && <ChartDisplay data={filteredData} country={selectedCountry}/>}
+
+            {Object.keys(filteredData).map(file => (
+                filteredData[file] ?
+                    <ChartDisplay key={file} data={filteredData[file]} title={file} country={selectedCountry} />
+                    : null
+            ))}
         </div>
     );
 };
